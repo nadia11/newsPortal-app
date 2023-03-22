@@ -17,7 +17,7 @@ export function createInitialState(): NewspaperState {
 
 @StoreConfig({
   name: 'newspaper',
-  idKey: 'title'
+    idKey: 'title'
 })
 export class NewspaperStore extends EntityStore<NewspaperState> {
 
@@ -26,12 +26,12 @@ export class NewspaperStore extends EntityStore<NewspaperState> {
   }
   loadNewspaper(newspaper: Newspaper[], areNewsPaperLoaded: boolean) {
 
-    // this.set(newspaper);
-    // debugger;
-    // this.update(state => ({
-    //   ...state,
-    //   areNewsPaperLoaded
-    // }));
+    this.set(newspaper);
+        debugger;
+    this.update(state => ({
+      ...state,
+      areNewsPaperLoaded
+    }));
   }
 }
 
