@@ -1,9 +1,10 @@
 <div>
 <mat-toolbar color="primary" class="d-flex">
-<div class="flex-fill">Home</div>
+<a class="flex-fill" routerLink="/category/all">Home</a>
   <div  *ngFor="let category of categories" class="flex-fill">
-{{category}}
-</div>
+    <a [routerLink]="'/category/'+category">{{category}}</a>
+
+  </div>
 </mat-toolbar>
 </div>
 <div>
