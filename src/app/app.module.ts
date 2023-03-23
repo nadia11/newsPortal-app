@@ -11,11 +11,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; 
 import {  } from '@datorama/akita';
 import { NewsPaperModule } from './newspaper/newspaper.module';
+import { NewsDetailsComponent } from './news-details/news-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    NewsDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { NewsPaperModule } from './newspaper/newspaper.module';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductListComponent },
-       { path: 'newspape', component: NewspaperComponent },
+       { path: '', component: NewspaperComponent },
+       { path: 'news/:category', component: NewsDetailsComponent },
     ]),
   ],
   bootstrap: [AppComponent]

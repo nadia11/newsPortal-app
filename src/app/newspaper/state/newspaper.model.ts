@@ -1,4 +1,5 @@
 import { ID } from '@datorama/akita';
+
 interface Multimedia{
 
   url	:string;
@@ -18,7 +19,7 @@ interface Multimedia{
   copyright:string;
 }
 export interface Newspaper {
-
+  id: string;
   section: string;
   subsection: string;
   title: string;

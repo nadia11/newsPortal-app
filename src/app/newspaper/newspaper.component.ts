@@ -2,10 +2,11 @@
 import { NewspaperQuery } from './state/newspaper.query';
 import { NewspaperService} from './state/newspaper.service';
 import { NewspaperState} from './state/newspaper.store';
-import { tap, switchMap, filter } from 'rxjs/operators';
+import { tap, switchMap, filter, map } from 'rxjs/operators';
 import { Newspaper} from './state/newspaper.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-newspaper',
@@ -13,25 +14,28 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./newspaper.component.css']
 })
 export class NewspaperComponent implements OnInit, OnDestroy{
-  //courseToBeUpdated: Newspaper;
-
-  // isUpdateActivated = false;
 
   listNewsPaperSub: Subscription;
-
-  // deleteCourseSub: Subscription;
-
-  // updateCourseSub: Subscription;
-
- // cstate: NewspaperState;
-
   newspaper$: Observable<Newspaper[]>;
+  search : String ="";
+  categories:any;
 
   constructor(private newspaperService: NewspaperService, private newspaperQuery: NewspaperQuery ) {
   }
 
   ngOnInit() {
+    debugger;
     this.newspaper$ = this.newspaperQuery.selectAll();
+    // this.categories = new Set(this.newspaper$.pipe(map(news=>news.section)));
+
+    const x = this.newspaper$.pipe(
+      map(arr => Array.from(new Set(arr.map(x => x.section))))
+    );
+
+    x.subscribe(x => {
+     this.categories=x;
+    })
+    // this.categories = new Set();
 
     this.listNewsPaperSub = this.newspaperQuery.selectAreNewsPaperLoaded$.pipe(
       filter(areNewsPaperLoaded => !areNewsPaperLoaded),
@@ -40,7 +44,7 @@ export class NewspaperComponent implements OnInit, OnDestroy{
           return this.newspaperService.getAllCourses();
         
       })
-    ).subscribe(result => {console.log(JSON.stringify(result.results))});
+    ).subscribe(result => {});
   }
 
   // deleteCourse(courseId: string) {
