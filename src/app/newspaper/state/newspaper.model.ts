@@ -19,7 +19,7 @@ interface Multimedia{
   copyright:string;
 }
 export interface Newspaper {
-  id: string;
+  _id: string;
   section: string;
   subsection: string;
   title: string;

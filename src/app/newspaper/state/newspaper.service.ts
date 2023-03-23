@@ -20,9 +20,8 @@ rootApi:string="https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=noBe
   getAllCourses(): Observable<any> {
     return this.http.get<any>(this.rootApi).pipe(
       tap(courses => {
-        console.log(JSON.stringify(courses.results));
         this.newspaperStore.loadNewspaper(courses.results, true);
-        debugger
+        
       })
     );
   }

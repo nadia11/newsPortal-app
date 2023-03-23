@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import {  } from '@datorama/akita';
 import { NewsPaperModule } from './newspaper/newspaper.module';
 import { NewsDetailsComponent } from './news-details/news-details.component';
+import { ActivatedRoute } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
     RouterModule.forRoot([
       { path: 'products', component: ProductListComponent },
        { path: '', component: NewspaperComponent },
-       { path: 'news/:category', component: NewsDetailsComponent },
+       { path: 'news/:newsId', component: NewsDetailsComponent },
     ]),
   ],
   bootstrap: [AppComponent]

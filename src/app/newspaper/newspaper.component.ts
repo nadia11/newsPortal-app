@@ -24,14 +24,15 @@ export class NewspaperComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-    debugger;
-    this.newspaper$ = this.newspaperQuery.selectAll();
-    // this.categories = new Set(this.newspaper$.pipe(map(news=>news.section)));
 
+    this.newspaper$ = this.newspaperQuery.selectAll();
+   
+    // this.categories = new Set(this.newspaper$.pipe(map(news=>news.section)));
+    this.newspaper$.subscribe(x=>console.log(x))
+   
     const x = this.newspaper$.pipe(
       map(arr => Array.from(new Set(arr.map(x => x.section))))
     );
-
     x.subscribe(x => {
      this.categories=x;
     })
