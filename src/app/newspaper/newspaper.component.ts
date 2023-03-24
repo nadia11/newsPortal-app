@@ -7,6 +7,9 @@ import { Newspaper} from './state/newspaper.model';
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 
 
@@ -15,24 +18,56 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './newspaper.component.html',
   styleUrls: ['./newspaper.component.css']
 })
-export class NewspaperComponent implements OnInit, OnDestroy, DoCheck{
+export class NewspaperComponent implements OnInit, OnDestroy{
 
   listNewsPaperSub: Subscription;
   newspaper$: Observable<Newspaper[]>;
-  search : String ="";
   categories:any;
   category:string;
   filteredNews:Newspaper[];
   activeRoute:string|null;
+  column:number;
+  destroyed = new Subject<void>();
+  searchTerm = '';
+  currentScreenSize: string;
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'XSmall'],
+    [Breakpoints.Small, 'Small'],
+    [Breakpoints.Medium, 'Medium'],
+    [Breakpoints.Large, 'Large'],
+    [Breakpoints.XLarge, 'XLarge'],
+  ]);
 
-  constructor(private route: ActivatedRoute,private newspaperService: NewspaperService, private newspaperQuery: NewspaperQuery ) {
+
+
+  constructor(private route: ActivatedRoute,private newspaperService: NewspaperService, private newspaperQuery: NewspaperQuery,breakpointObserver: BreakpointObserver ) {
+    breakpointObserver
+    .observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ])
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(result => {
+      for (const query of Object.keys(result.breakpoints)) {
+        if (result.breakpoints[query]) {
+          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+          this.column=(this.currentScreenSize==="XSmall")?1:4;
+        }
+      }
+    });
+  
   }
 
   ngOnInit() {
 
     this.route.params.subscribe((params) => this.category = params['category']);
     this.route.paramMap.subscribe(params => {
-      
+      // if(this.searchTerm!=""){
+      //   this.newspaper$ =  this.newspaperQuery.selectAll().pipe(filter(x => x.title.includes(this.searchTerm)));
+      // }
       this.newspaper$ = this.newspaperQuery.selectAll({filterBy: [
         (entity) => 
           entity.section === this.category ||this.category=="all"
@@ -57,11 +92,6 @@ export class NewspaperComponent implements OnInit, OnDestroy, DoCheck{
       })
     ).subscribe(result => {});
 
-  }
-  ngDoCheck() {
-    
-    const routeParams = this.route.snapshot.paramMap;
-    const nextRoute = routeParams.get('category');
   }
 
 
@@ -88,6 +118,8 @@ export class NewspaperComponent implements OnInit, OnDestroy, DoCheck{
     if (this.listNewsPaperSub) {
       this.listNewsPaperSub.unsubscribe();
     }
+    this.destroyed.next();
+    this.destroyed.complete();
 
     // if (this.deleteCourseSub) {
     //   this.deleteCourseSub.unsubscribe();

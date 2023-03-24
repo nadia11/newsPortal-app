@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
+import {LayoutModule} from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [NewspaperComponent 
@@ -22,7 +23,7 @@ import { v4 as uuidv4 } from 'uuid';
  CommonModule,
  FormsModule,
  HttpClientModule,MatToolbarModule,MatGridListModule,MatTableModule,
- MatIconModule,MatFormFieldModule,MatCardModule,MatButtonModule,
+ MatIconModule,MatFormFieldModule,MatCardModule,MatButtonModule,LayoutModule,
  RouterModule
 
     ],

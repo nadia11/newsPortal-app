@@ -11,17 +11,19 @@ import { RouterModule } from '@angular/router';
 import {  } from '@datorama/akita';
 import { NewsPaperModule } from './newspaper/newspaper.module';
 import { NewsDetailsComponent } from './news-details/news-details.component';
-
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import { SearchFilterPipe } from './search-filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     NewsDetailsComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
     NewsPaperModule,
     BrowserAnimationsModule,
+    MatGridListModule,
     MatCardModule,
     MatListModule,
     HttpClientModule,

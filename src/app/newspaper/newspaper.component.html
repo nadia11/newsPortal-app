@@ -1,14 +1,25 @@
 <div>
-<mat-toolbar color="primary" class="d-flex">
-<a class="flex-fill" routerLink="/category/all">Home</a>
+<mat-toolbar color="primary" class="d-flex" >
+<a class="flex-fill" routerLink="/category/all" id="tool">HOME</a>
   <div  *ngFor="let category of categories" class="flex-fill">
-    <a [routerLink]="'/category/'+category">{{category}}</a>
+    <a [routerLink]="'/category/'+category" id="tool">{{category  | uppercase}}</a>
 
   </div>
 </mat-toolbar>
 </div>
+The current screen size is <strong>{{currentScreenSize}}</strong>
 <div>
-<mat-grid-list cols="4" >
+
+  <!-- <form class="wrap">
+    <div class="search">
+      <h3>Search country by name filter : </h3>
+      <input class="searchTerm" type="text" name="searchTerm" 
+      placeholder="Filter by country name"
+      [(ngModel)]="searchTerm" (input)="search(searchTerm)"
+        />
+    </div>
+  </form> -->
+<mat-grid-list [cols]="column" >
   <div  *ngFor="let news of newspaper$ | async">
     <a   [routerLink]="['/news', news._id]">
   <mat-grid-tile> 
@@ -18,7 +29,7 @@
         <mat-card-title> {{ news.title }}</mat-card-title>
         <mat-card-subtitle>{{ news.byline }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image [src]='news.multimedia[0].url' alt="Photo of a Shiba Inu">
+      <img mat-card-image [src]='news.multimedia[0].url' alt="Photo of a Shiba Inu" class="responsive">
       <mat-card-content>
         <p>
          {{news.abstract}}

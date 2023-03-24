@@ -1,18 +1,20 @@
 import { ID } from '@datorama/akita';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { NewspaperStore, newspaperStore,NewspaperState } from './newspaper.store';
 import { EntityStore, EntityState } from '@datorama/akita';
 import { Newspaper } from './newspaper.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { PersistState } from '@datorama/akita';
+import { storage } from '../././../../main';
 
 @Injectable({ providedIn: 'root' })
 export class NewspaperService {
 rootApi:string="https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=noBemaJCjGOJxZakZAFvyjoih4UUQwvX"
 
 
-  constructor(private newspaperStore: NewspaperStore, private http: HttpClient) {
+  constructor( private newspaperStore: NewspaperStore, private http: HttpClient) {
     this.http = http;
     this.newspaperStore = newspaperStore;
   }
