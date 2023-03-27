@@ -20,11 +20,12 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class NewspaperComponent implements OnInit, OnDestroy{
 
-  listNewsPaperSub: Subscription;
+ 
   newspaper$: Observable<Newspaper[]>;
-  categories:any;
+  filteredNews: Newspaper[] =[];
+  term = '';
+  // categories:any;
   category:string;
-  filteredNews:Newspaper[];
   activeRoute:string|null;
   column:number;
   destroyed = new Subject<void>();
@@ -65,32 +66,23 @@ export class NewspaperComponent implements OnInit, OnDestroy{
 
     this.route.params.subscribe((params) => this.category = params['category']);
     this.route.paramMap.subscribe(params => {
-      // if(this.searchTerm!=""){
-      //   this.newspaper$ =  this.newspaperQuery.selectAll().pipe(filter(x => x.title.includes(this.searchTerm)));
-      // }
+
       this.newspaper$ = this.newspaperQuery.selectAll({filterBy: [
         (entity) => 
           entity.section === this.category ||this.category=="all"
       ]});
+   
     });
    
   
     const x = this.newspaperQuery.selectAll().pipe(
-      map(arr => Array.from(new Set(arr.map(x => x.section))))
+      map(arr =>arr)
     );
     x.subscribe(x => {
-     this.categories=x;
+     this.filteredNews=x;
     })
-   
 
-    this.listNewsPaperSub = this.newspaperQuery.selectAreNewsPaperLoaded$.pipe(
-      filter(areNewsPaperLoaded => !areNewsPaperLoaded),
-      switchMap(areNewsPaperLoaded => {
-       
-          return this.newspaperService.getAllCourses();
-        
-      })
-    ).subscribe(result => {});
+
 
   }
 
@@ -115,11 +107,7 @@ export class NewspaperComponent implements OnInit, OnDestroy{
   // }
 
   ngOnDestroy() {
-    if (this.listNewsPaperSub) {
-      this.listNewsPaperSub.unsubscribe();
-    }
-    this.destroyed.next();
-    this.destroyed.complete();
+ 
 
     // if (this.deleteCourseSub) {
     //   this.deleteCourseSub.unsubscribe();

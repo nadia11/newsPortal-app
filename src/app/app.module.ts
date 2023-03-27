@@ -13,6 +13,8 @@ import { NewsPaperModule } from './newspaper/newspaper.module';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { SearchFilterPipe } from './search-filter.pipe';
+
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     MatGridListModule,
     MatCardModule,
     MatListModule,
+    MatToolbarModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

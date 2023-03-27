@@ -15,6 +15,7 @@
   #tool{
     color: white!important;
   }
-    .responsive {
-   
-    }
+  img{
+    background-size: cover;
+    width: 80%;
+  }

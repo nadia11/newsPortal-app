@@ -1,2 +1,8 @@
-
+<mat-toolbar color="primary" class="d-flex" >
+    <a class="flex-fill" routerLink="/category/all" id="tool">HOME</a>
+      <div  *ngFor="let category of categories" class="flex-fill">
+        <a [routerLink]="'/category/'+category" id="tool">{{category  | uppercase}}</a>
+    
+      </div>
+    </mat-toolbar>
 <router-outlet></router-outlet>

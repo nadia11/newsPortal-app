@@ -4,7 +4,7 @@ import { NewspaperService } from '././state/newspaper.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NewspaperComponent } from '././newspaper.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+//import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { Component, ViewChild } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import {LayoutModule} from '@angular/cdk/layout';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [NewspaperComponent 
@@ -22,9 +23,10 @@ import {LayoutModule} from '@angular/cdk/layout';
   imports: [
  CommonModule,
  FormsModule,
- HttpClientModule,MatToolbarModule,MatGridListModule,MatTableModule,
+ HttpClientModule,MatGridListModule,MatTableModule,
  MatIconModule,MatFormFieldModule,MatCardModule,MatButtonModule,LayoutModule,
- RouterModule
+ RouterModule,
+  Ng2SearchPipeModule
 
     ],
     providers: [NewspaperService],

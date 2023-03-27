@@ -1,4 +1,4 @@
-
+<div class="container-fluid">
 <div *ngIf="(news$ | async) as newsDetails">
   <mat-grid-list cols="2"  rowHeight="2:1">
   <mat-grid-tile>
@@ -9,23 +9,18 @@
             <mat-card-subtitle>{{ newsDetails.byline }}</mat-card-subtitle>
             <mat-card-subtitle>{{ newsDetails.created_date }}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image [src]='newsDetails.multimedia[0].url' alt="Photo of a Shiba Inu" class="responsive">
+          <img mat-card-image [src]='newsDetails.multimedia[0].url' alt="Photo of a Shiba Inu">
       
         
         </mat-card>
     
 
       </mat-grid-tile>
-    <mat-grid-tile>
-      <h1>  Related News</h1>
-        <div *ngFor="let news of newspaper$ | async">
-        <p>{{news.title}}</p>
-        </div>
-    </mat-grid-tile>
 
   </mat-grid-list>
 
     <h1> {{ newsDetails.title }}</h1>
+    <div>{{ newsDetails.abstract }}</div>
     <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
         a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -33,7 +28,20 @@
           It was popularised in the 1960s with the release of Letraset sheets containing 
           Lorem Ipsum passages, and more recently with desktop publishing software like
            Aldus PageMaker including versions of Lorem Ipsum.</div>
-    <div>{{ newsDetails.abstract }}</div>
-    <div>{{ newsDetails.abstract }}</div>
+           <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+             a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+              but also the leap into electronic typesetting, remaining essentially unchanged.
+               It was popularised in the 1960s with the release of Letraset sheets containing 
+               Lorem Ipsum passages, and more recently with desktop publishing software like
+                Aldus PageMaker including versions of Lorem Ipsum.</div>
+                <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                   a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged.
+                     It was popularised in the 1960s with the release of Letraset sheets containing 
+                     Lorem Ipsum passages, and more recently with desktop publishing software like
+                      Aldus PageMaker including versions of Lorem Ipsum.</div>
 
+</div>
 </div>
