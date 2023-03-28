@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Newspaper } from '../newspaper/state/newspaper.model';
+import { Newspaper } from '../newspaper-state/newspaper.model';
 import { persistState } from '@datorama/akita';
 import { Observable, Subscription } from 'rxjs';
-import { NewspaperQuery } from '../newspaper/state/newspaper.query';
-import { NewspaperService} from '../newspaper/state/newspaper.service';
+import { NewspaperQuery } from '../newspaper-state/newspaper.query';
+import { NewspaperService} from '../newspaper-state/newspaper.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 @Component({

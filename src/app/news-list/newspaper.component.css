@@ -26,9 +26,6 @@
   color: white!important;
 }
   .image {
-    
-    /* overflow:hidden;
-    display:block; */
     background-size: cover;
     object-fit: contain;
     width: 100%;

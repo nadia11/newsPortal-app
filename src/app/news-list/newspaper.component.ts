@@ -1,9 +1,9 @@
 
-import { NewspaperQuery } from './state/newspaper.query';
-import { NewspaperService} from './state/newspaper.service';
-import { NewspaperState} from './state/newspaper.store';
+import { NewspaperQuery } from '../newspaper-state/newspaper.query';
+import { NewspaperService} from '../newspaper-state/newspaper.service';
+import { NewspaperState} from '../newspaper-state/newspaper.store';
 import { tap, switchMap, filter, map } from 'rxjs/operators';
-import { Newspaper} from './state/newspaper.model';
+import { Newspaper} from '../newspaper-state/newspaper.model';
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

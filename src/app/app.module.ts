@@ -3,18 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatCardModule} from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
-import { NewspaperComponent } from './newspaper/newspaper.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; 
-import {  } from '@datorama/akita';
-import { NewsPaperModule } from './newspaper/newspaper.module';
-import { NewsDetailsComponent } from './news-details/news-details.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { NewspaperService } from './newspaper/state/newspaper.service';
+import { LayoutModule } from './layout/layout.module';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { NewsPaperModule } from './news-list/newspaper.module';
+import { NewsDetailsComponent } from './news-details/news-details.component';
+import { NewspaperComponent } from './news-list/newspaper.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +21,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [
     BrowserModule,
     NewsPaperModule,
+    LayoutModule,
     BrowserAnimationsModule,
-    MatGridListModule,
     MatCardModule,
-    MatListModule,
-    MatToolbarModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'category/all', pathMatch: 'full' },
        { path: 'category/:category', component: NewspaperComponent },
@@ -37,6 +32,5 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ]),
   ],
   bootstrap: [AppComponent],
-  providers: [NewspaperService],
 })
 export class AppModule { }
