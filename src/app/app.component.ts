@@ -13,7 +13,7 @@ import { tap, switchMap, filter, map } from 'rxjs/operators';
 export class AppComponent implements OnInit{
   title = 'newsPortal-app';
   newspaper$: Observable<Newspaper[]>;
-  categories:any;
+  categories: Set<string> ;
   constructor(private newspaperService: NewspaperService, private newspaperQuery: NewspaperQuery){}
   ngOnInit() {
     const x = this.newspaperQuery.selectAll().pipe(

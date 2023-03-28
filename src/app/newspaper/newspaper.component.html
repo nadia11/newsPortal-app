@@ -1,4 +1,4 @@
-<div>
+
 <!-- <mat-toolbar color="primary" class="d-flex" >
 <a class="flex-fill" routerLink="/category/all" id="tool">HOME</a>
   <div  *ngFor="let category of categories" class="flex-fill">
@@ -9,7 +9,7 @@
 
 <!-- The current screen size is <strong>{{currentScreenSize}}</strong> -->
 
- <div style="margin-top: 10px; float:right ; padding-bottom: 50px; margin-right: 20px;">
+ <!-- <div style="margin-top: 10px; float:right ; padding-bottom: 50px; margin-right: 20px;">
   <div class="input-group">
     <div class="form-outline">
       <input type="search" id="form1" class="form-control" [(ngModel)]="term"/>
@@ -17,11 +17,24 @@
     <button type="button" class="btn btn-primary input-group-append">
       <mat-icon >search</mat-icon>
     </button>
+  </div> -->
+  <div style="margin-top: 10px; margin-right: 20px; float: right;">
+  <div class="input-group">
+    <div class="form-outline">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="term"
+    />
   </div>
-
-
+    <button type="button" class="btn btn-primary input-group-append">
+      <mat-icon >search</mat-icon>
+    </button>
+  </div>
 </div>
-<mat-grid-list [cols]="column" style="margin-top: 50px;padding-top: 50px;">
+
+<mat-grid-list [cols]="column" style="margin-top: 30px;">
   <div  *ngFor="let news of newspaper$ | async |filter:term">
     <a   [routerLink]="['/news', news._id]">
   <mat-grid-tile> 

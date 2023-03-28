@@ -26,9 +26,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
  HttpClientModule,MatGridListModule,MatTableModule,
  MatIconModule,MatFormFieldModule,MatCardModule,MatButtonModule,LayoutModule,
  RouterModule,
-  Ng2SearchPipeModule
-
-    ],
+  Ng2SearchPipeModule],
     providers: [NewspaperService],
     exports: [NewspaperComponent]
  

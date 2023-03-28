@@ -12,14 +12,13 @@ import {  } from '@datorama/akita';
 import { NewsPaperModule } from './newspaper/newspaper.module';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { SearchFilterPipe } from './search-filter.pipe';
+import { NewspaperService } from './newspaper/state/newspaper.service';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
     NewsDetailsComponent,
-    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
        { path: 'news/:newsId', component: NewsDetailsComponent },
     ]),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [NewspaperService],
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @Component({
@@ -22,9 +22,10 @@ export class NewspaperComponent implements OnInit, OnDestroy{
 
  
   newspaper$: Observable<Newspaper[]>;
-  filteredNews: Newspaper[] =[];
-  term = '';
-  // categories:any;
+  listNewsPaperSub: Subscription;
+  filteredNews: Newspaper[];
+  term!: string;
+   categories:any;
   category:string;
   activeRoute:string|null;
   column:number;
@@ -67,21 +68,36 @@ export class NewspaperComponent implements OnInit, OnDestroy{
     this.route.params.subscribe((params) => this.category = params['category']);
     this.route.paramMap.subscribe(params => {
 
-      this.newspaper$ = this.newspaperQuery.selectAll({filterBy: [
+      this.newspaper$ = this.newspaperQuery.selectAll(
+        {filterBy: [
         (entity) => 
           entity.section === this.category ||this.category=="all"
       ]});
    
     });
-   
+    this.listNewsPaperSub = this.newspaperQuery.selectAreNewsPaperLoaded$.pipe(
+      filter(areNewsPaperLoaded => !areNewsPaperLoaded),
+      switchMap(areNewsPaperLoaded => {
+       
+          return this.newspaperService.getAllCourses();
+        
+      })
+    ).subscribe(result => {console.log(JSON.stringify(result.results))});
   
     const x = this.newspaperQuery.selectAll().pipe(
       map(arr =>arr)
     );
-    x.subscribe(x => {
-     this.filteredNews=x;
+    x.subscribe(y => {
+     this.filteredNews=y;
     })
-
+    // this.newspaper$.subscribe(v=>console.log(v))
+    // const x = this.newspaperQuery.selectAll().pipe(
+    //   map(arr => Array.from(new Set(arr.map(x => x.section))))
+     
+    // );
+    // x.subscribe(x => {
+    //  this.categories=x;
+    // })
 
 
   }
