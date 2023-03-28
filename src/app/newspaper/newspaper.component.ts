@@ -24,13 +24,25 @@ export class NewspaperComponent implements OnInit, OnDestroy{
   newspaper$: Observable<Newspaper[]>;
   listNewsPaperSub: Subscription;
   filteredNews: Newspaper[];
-  term!: string;
+  term: string ="";
    categories:any;
   category:string;
   activeRoute:string|null;
   column:number;
   destroyed = new Subject<void>();
   searchTerm = '';
+
+  search(){
+    this.newspaper$ = this.newspaperQuery.selectAll(
+      {filterBy: [
+      (entity) => 
+          entity.title.toLocaleLowerCase().includes(this.term.toLowerCase())
+          ||  entity.abstract.toLocaleLowerCase().includes(this.term.toLowerCase())
+          ||  entity.byline.toLocaleLowerCase().includes(this.term.toLowerCase()) ,
+    
+    ]});
+  }
+
   currentScreenSize: string;
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'XSmall'],
@@ -56,25 +68,31 @@ export class NewspaperComponent implements OnInit, OnDestroy{
       for (const query of Object.keys(result.breakpoints)) {
         if (result.breakpoints[query]) {
           this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
-          this.column=(this.currentScreenSize==="XSmall")?1:4;
+          if(this.currentScreenSize==="XLarge"){this.column=3;}
+          if(this.currentScreenSize==="Medium"){this.column=2;}
+          if(this.currentScreenSize===("XSmall"||"Small")){this.column=1;}
         }
       }
-    });
+    },
+    err => {throw new Error('Screen Size error', err)},
+    );
   
   }
 
   ngOnInit() {
 
-    this.route.params.subscribe((params) => this.category = params['category']);
+    this.route.params.subscribe((params) => this.category = params['category'],    err => {throw new Error('Screen Size error', err)},);
     this.route.paramMap.subscribe(params => {
 
       this.newspaper$ = this.newspaperQuery.selectAll(
         {filterBy: [
         (entity) => 
-          entity.section === this.category ||this.category=="all"
+        entity.section === this.category ||this.category=="all" ,
+      
       ]});
    
-    });
+    },
+    );
     this.listNewsPaperSub = this.newspaperQuery.selectAreNewsPaperLoaded$.pipe(
       filter(areNewsPaperLoaded => !areNewsPaperLoaded),
       switchMap(areNewsPaperLoaded => {
@@ -82,14 +100,18 @@ export class NewspaperComponent implements OnInit, OnDestroy{
           return this.newspaperService.getAllCourses();
         
       })
-    ).subscribe(result => {console.log(JSON.stringify(result.results))});
+    ).subscribe(result => {console.log(JSON.stringify(result.results))},
+    err => {throw new Error('Screen Size error', err)},
+    );
   
     const x = this.newspaperQuery.selectAll().pipe(
       map(arr =>arr)
     );
     x.subscribe(y => {
      this.filteredNews=y;
-    })
+    },
+    
+    err => {throw new Error('Screen Size error', err)},)
     // this.newspaper$.subscribe(v=>console.log(v))
     // const x = this.newspaperQuery.selectAll().pipe(
     //   map(arr => Array.from(new Set(arr.map(x => x.section))))

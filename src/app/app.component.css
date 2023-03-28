@@ -7,3 +7,10 @@ a{
  #tool{
    color: white!important;
  }
+ footer{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  background-color: #1371C3;
+  color: white;
+  }

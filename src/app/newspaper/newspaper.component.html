@@ -1,71 +1,53 @@
-
-<!-- <mat-toolbar color="primary" class="d-flex" >
-<a class="flex-fill" routerLink="/category/all" id="tool">HOME</a>
-  <div  *ngFor="let category of categories" class="flex-fill">
-    <a [routerLink]="'/category/'+category" id="tool">{{category  | uppercase}}</a>
-
-  </div>
-</mat-toolbar> -->
-
-<!-- The current screen size is <strong>{{currentScreenSize}}</strong> -->
-
- <!-- <div style="margin-top: 10px; float:right ; padding-bottom: 50px; margin-right: 20px;">
+<div style="margin-top: 10px; margin-right: 20px; float: right">
   <div class="input-group">
     <div class="form-outline">
-      <input type="search" id="form1" class="form-control" [(ngModel)]="term"/>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="term"
+        (input)="search()"
+        value="term"
+      />
     </div>
-    <button type="button" class="btn btn-primary input-group-append">
-      <mat-icon >search</mat-icon>
-    </button>
-  </div> -->
-  <div style="margin-top: 10px; margin-right: 20px; float: right;">
-  <div class="input-group">
-    <div class="form-outline">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search..."
-      [(ngModel)]="term"
-    />
-  </div>
-    <button type="button" class="btn btn-primary input-group-append">
-      <mat-icon >search</mat-icon>
+    <button type="button" class="btn btn-primary input-group-append" (click)="search()">
+      <mat-icon>search</mat-icon>
     </button>
   </div>
 </div>
+{{ this.term }}
 
-<mat-grid-list [cols]="column" style="margin-top: 30px;">
-  <div  *ngFor="let news of newspaper$ | async |filter:term">
-    <a   [routerLink]="['/news', news._id]">
-  <mat-grid-tile> 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title> {{ news.title }}</mat-card-title>
-        <mat-card-subtitle>{{ news.byline }}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]='news.multimedia[0].url' alt="Photo of a Shiba Inu" class="responsive">
-      <mat-card-content>
-        <p>
-         {{news.abstract}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>See More..</button>
-      </mat-card-actions>
-    </mat-card>
-   
-  </mat-grid-tile>
-</a>
-</div>
+
+<mat-grid-list [cols]="column" style="margin-top: 30px">
+  <div *ngFor="let news of newspaper$ | async">
+    <a [routerLink]="['/news', news._id]">
+      <mat-grid-tile class="card-title">
+        <mat-card class="example-card">
+          <mat-card-header class="card-header">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title> {{ news.title }}</mat-card-title>
+            <mat-card-subtitle>{{ news.byline }}</mat-card-subtitle>
+          </mat-card-header>
+          <div class="container">
+            <img
+              mat-card-image
+              [src]="news.multimedia[0].url"
+              alt="Photo of a Shiba Inu"
+              class="image"
+            />
+          </div>
+          <mat-card-content>
+            <p>
+              {{ news.abstract }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>See More..</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </a>
+  </div>
 </mat-grid-list>
 
 
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-  <span matPrefix> </span>
-  <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
-  <button matSuffix mat-button><mat-icon >search</mat-icon></button>
-  </mat-form-field>
-  <br/>
-</form> -->

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { PersistState } from '@datorama/akita';
 import { storage } from '../././../../main';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NewspaperService {
@@ -22,12 +23,17 @@ rootApi:string="https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=noBe
   getAllCourses(): Observable<any> {
     return this.http.get<any>(this.rootApi).pipe(
       tap(courses => {
-        this.newspaperStore.loadNewspaper(courses.results, true);
-        
-      })
+       
+        this.newspaperStore.loadNewspaper(courses.results, true);    
+      }),
+      retry(1),
+
+     catchError(err => {
+      throw 'error in source. Details: ' + err;
+    })
     );
   }
-
+}
   // createCourse(course: Newspaper): Observable<Newspaper> {
   //   return this.http.post<Newspaper>(this.rootApi, course).pipe(
   //     tap(value => {
@@ -50,7 +56,7 @@ rootApi:string="https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=noBe
   //       this.newspaperStore.update(courseId, course);
   //     })
   //   );
-  }
+  
 
 
 
