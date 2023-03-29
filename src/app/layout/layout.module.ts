@@ -5,11 +5,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { NewspaperService } from '../newspaper-state/newspaper.service';
 import { RouterModule } from '@angular/router'; 
+import { DxTabsModule, DxSelectBoxModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [FooterComponent, NavbarComponent],
   imports: [
-    CommonModule, MatToolbarModule, RouterModule
+    CommonModule, MatToolbarModule, RouterModule, DxTabsModule,
+    DxSelectBoxModule
   ],
   exports: [NavbarComponent,FooterComponent],
   

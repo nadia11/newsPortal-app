@@ -1,6 +1,49 @@
 a{
     text-decoration:none;
-   }
+ }
+
  #tool{
    color: white!important;
+   background-color: black !important;
  }
+
+ ::ng-deep .content {
+  text-align: justify;
+  margin-top: 25px;
+  background-color:blue !important;
+}
+
+::ng-deep #longtabs {
+
+}
+
+::ng-deep #scrolledtabs {
+  margin-top: 20px;
+}
+
+::ng-deep #tabs {
+  margin-top: 10px !important;
+}
+
+::ng-deep .caption {
+  font-size: 16px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+}
+
+::ng-deep .left-aligned {
+  text-align: left;
+}
+
+::ng-deep .dx-tab {
+  padding: 9px;  background-color:black !important;
+  height:6vh;
+  color: white;
+  font-size:large;
+  font-weight: 700;
+}
+
+::ng-deep .dx-tab.dx-tab-selected{
+  background-color:#0d6efd!important;
+  color: white;
+}

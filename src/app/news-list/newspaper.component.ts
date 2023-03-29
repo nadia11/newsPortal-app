@@ -1,4 +1,3 @@
-
 import { NewspaperQuery } from '../newspaper-state/newspaper.query';
 import { NewspaperService} from '../newspaper-state/newspaper.service';
 import { NewspaperState} from '../newspaper-state/newspaper.store';
@@ -10,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @Component({
@@ -31,6 +29,10 @@ export class NewspaperComponent implements OnInit, OnDestroy{
   column:number;
   destroyed = new Subject<void>();
   searchTerm = '';
+  getScreenWidth: number;
+  getScreenHeight: number;
+  widthRatio:string;
+  heightRatio:string;
 
   search(){
     this.newspaper$ = this.newspaperQuery.selectAll(
@@ -87,7 +89,7 @@ export class NewspaperComponent implements OnInit, OnDestroy{
       this.newspaper$ = this.newspaperQuery.selectAll(
         {filterBy: [
         (entity) => 
-        entity.section === this.category ||this.category=="all" ,
+        entity.section === this.category ||this.category=="Home" ,
       
       ]});
    
@@ -112,37 +114,13 @@ export class NewspaperComponent implements OnInit, OnDestroy{
     },
     
     err => {throw new Error('Screen Size error', err)},)
-    // this.newspaper$.subscribe(v=>console.log(v))
-    // const x = this.newspaperQuery.selectAll().pipe(
-    //   map(arr => Array.from(new Set(arr.map(x => x.section))))
-     
-    // );
-    // x.subscribe(x => {
-    //  this.categories=x;
-    // })
 
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
 
   }
 
 
-  // deleteCourse(courseId: string) {
-  //   this.deleteCourseSub = this.courseService.deleteCourse(courseId).subscribe(result => {
-  //     console.log(result);
-  //   });
-  // }
-
-  // showUpdateForm(course: Course) {
-  //   this.courseToBeUpdated = {...course};
-  //   this.isUpdateActivated = true;
-  // }
-
-  // updateCourse(updateForm) {
-  //   this.updateCourseSub = this.courseService.updateCourse(
-  //     this.courseToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
-  //   );
-  //   this.isUpdateActivated = false;
-  //   this.courseToBeUpdated = null;
-  // }
 
   ngOnDestroy() {
  

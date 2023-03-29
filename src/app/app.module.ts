@@ -26,7 +26,7 @@ import { NewspaperComponent } from './news-list/newspaper.component';
     MatCardModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'category/all', pathMatch: 'full' },
+      { path: '', redirectTo: 'category/Home', pathMatch: 'full' },
        { path: 'category/:category', component: NewspaperComponent },
        { path: 'news/:newsId', component: NewsDetailsComponent },
     ]),

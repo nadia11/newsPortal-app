@@ -1,6 +1,9 @@
 :root {
   --column:"2";
 }
+.container{
+  background-color: white !important;
+}
 .example {
   display: flex
   }
@@ -26,14 +29,30 @@
   color: white!important;
 }
   .image {
-    background-size: cover;
     object-fit: contain;
     width: 100%;
-    height: 100%;
+    max-height: 150px;
   }
   .container {
     height: 100vh; 
     background-color: #e3e3e3;
     display: flex; 
     align-items: center;
+  }
+
+  ::ng-deep .dx-tile-content .dxi-item {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+ 
+  }
+  ::ng-deep .dx-tile{
+    border: 1px solid  #212529 !important;
+    border-radius: 4pt;
+  }
+  .mat-mdc-card-outlined {
+    border: none !important;
   }
