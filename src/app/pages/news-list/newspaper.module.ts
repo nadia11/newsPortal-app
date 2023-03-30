@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewspaperService } from '../newspaper-state/newspaper.service';
+import { NewspaperService } from './../../states/newspaper-state'
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NewspaperComponent } from './newspaper.component';
-//import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { Component, ViewChild } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
@@ -16,10 +14,11 @@ import {RouterModule} from '@angular/router';
 import {LayoutModule} from '@angular/cdk/layout';
 import { DxTileViewModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NewspaperComponent } from './newspaper.component';
 @NgModule({
 
   declarations: [
-     NewspaperComponent 
+     NewspaperComponent
   ],
 
 imports: [

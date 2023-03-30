@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { NewspaperService } from '../newspaper-state/newspaper.service';
+import { NewspaperService } from '../states/newspaper-state/newspaper.service';
 import { RouterModule } from '@angular/router'; 
 import { DxTabsModule, DxSelectBoxModule } from 'devextreme-angular';
 

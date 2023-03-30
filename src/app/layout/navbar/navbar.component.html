@@ -1,4 +1,8 @@
-
-    <div id="longtabs">
-      <dx-tabs [dataSource]="categories" [routerLink]="'/category/'+category" (onItemClick)="selectTab($event)" id="tool" ></dx-tabs>
-    </div>
+<div id="longtabs">
+  <dx-tabs
+    [dataSource]="categories"
+    [routerLink]="'/category/' + category"
+    (onItemClick)="selectTab($event)"
+    id="tool"
+  ></dx-tabs>
+</div>

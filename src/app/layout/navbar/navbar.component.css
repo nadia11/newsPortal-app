@@ -1,16 +1,16 @@
-a{
-    text-decoration:none;
- }
+a {
+  text-decoration: none;
+}
 
- #tool{
-   color: white!important;
-   background-color: black !important;
- }
+#tool {
+  color: white !important;
+  background-color: black !important;
+}
 
- ::ng-deep .content {
+::ng-deep .content {
   text-align: justify;
   margin-top: 25px;
-  background-color:blue !important;
+  background-color: blue !important;
 }
 
 ::ng-deep #longtabs {
@@ -37,13 +37,13 @@ a{
 }
 
 ::ng-deep .dx-tab {
-  padding: 9px;  
-  height:3vh;
-  font-size:large;
+  padding: 9px;
+  height: 3vh;
+  font-size: large;
   font-weight: 400;
 }
 
-::ng-deep .dx-tab.dx-tab-selected{
-  background-color:#0b0b0b!important;
+::ng-deep .dx-tab.dx-tab-selected {
+  background-color: #0b0b0b !important;
   color: white;
 }

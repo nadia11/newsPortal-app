@@ -1,38 +1,44 @@
-    .example-card {
-       width: 100%;
-      max-height: 100%;
-      overflow: hidden; 
-    }
-    
-    .card-header{
-      margin-bottom: 5px;
-    }
-.header{
-  padding-left:20%;
-  padding-right:20%;
+.example-card {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
-.paragraph{
+.card-header {
+  margin-bottom: 5px;
+}
+.header {
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+  margin: 40px;
+  font-weight: 700;
+  font-family: 'nyt-cheltenham,georgia,' times new roman ',times,serif';
+}
+.avatar{
+  width: 80px; 
+  height: 80px;
+}
+.paragraph {
   margin-bottom: 3vh;
   font-size: medium;
 }
-.cover-image{
+.cover-image {
   margin-top: 2vh;
   margin-bottom: 3vh;
-   width: 100%;
+  width: 100%;
 }
-    .example-header-image {
-      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-      background-size: cover;
-    }
-    a{
-     text-decoration:none;
-    }
-  #tool{
-    color: white!important;
-  }
-  img{
-    background-size: cover;
-    width: 90vh;
-    height:50vh;
-    
-  }
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+a {
+  text-decoration: none;
+}
+#tool {
+  color: white !important;
+}
+img {
+  background-size: cover;
+  width: 90vh;
+  height: 50vh;
+}

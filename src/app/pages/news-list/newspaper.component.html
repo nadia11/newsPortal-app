@@ -1,3 +1,5 @@
+<!-- search bar -->
+
 <div class="input-group">
   <div class="form-outline">
     <input
@@ -5,18 +7,17 @@
       placeholder="Search..."
       [(ngModel)]="term"
       (input)="search()"
-      value="term" class="input-bar"
+      value="term"
+      class="input-bar"
     />
   </div>
-  <button
-    type="button"
-    class="input-group-append"
-    (click)="search()"
-  >
+  <button type="button" class="input-group-append" (click)="search()">
     <mat-icon>search</mat-icon>
   </button>
 </div>
 
+
+<!-- List View -->
 <dx-tile-view
   class="dx-tile-content"
   direction="vertical"
@@ -30,33 +31,22 @@
 >
   <dxi-item
     *ngFor="let news of newspaper$ | async"
-    [widthRatio]="news.multimedia[0].width / 1590"
-    [heightRatio]="news.multimedia[0].height / 2048"
   >
     <a [routerLink]="['/news', news._id]">
-    <h4 class="card-title text-center">{{ news.title }}</h4>
-        <h6 class="mb-4 text-center">{{
-          news.byline
-        }}</h6>
-        <div class="container">
-          <img
-            [src]="news.multimedia[0].url"
-            alt="Photo of a Shiba Inu"
-            class="image"
-          />
-          <p class="abstract">
-            {{ news.abstract }}
-          </p>
-          
-        <div class="see-more">
-          See More..
-        </div>
-        </div>
-    
-          
-   
+      <h4 class="card-title text-center">{{ news.title }}</h4>
+      <h6 class="mb-4 text-center">{{ news.byline }}</h6>
+      <div class="container">
+        <img
+          [src]="news.multimedia[0].url"
+          alt="Photo of a Shiba Inu"
+          class="image"
+        />
+        <p class="abstract">
+          {{ news.abstract }}
+        </p>
 
-
+        <div class="see-more">See More..</div>
+      </div>
     </a>
   </dxi-item>
 </dx-tile-view>

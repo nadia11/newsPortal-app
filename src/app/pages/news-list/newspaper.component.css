@@ -1,85 +1,85 @@
 :root {
-  --column:"2";
+  --column: "700";
 }
-.container{
+.container {
   background-color: white !important;
 }
-.card-title{
+.card-title {
   padding-top: 20px;
-  font-family: nyt-cheltenham, Georgia, 'Times New Roman', Times, serif;
+  font-family: nyt-cheltenham, Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
   color: black;
 }
-.input-group{
+.input-group {
   margin-top: 2vw;
-    padding-right: 1.5vw;
-    display: flex;
-    justify-content: end;
+  padding-right: 1.5vw;
+  display: flex;
+  justify-content: end;
 }
-.input-bar{
-  border: 2 px solid black !important; height: 30px;
+.input-bar {
+  border: 2 px solid black !important;
+  height: 30px;
 }
-.input-group-append{
-  height:30px !important;
+.input-group-append {
+  height: 30px !important;
   border-color: rgb(184, 187, 188);
 }
-.abstract{
+.abstract {
   margin-top: 2vh;
 }
-.see-more{
+.see-more {
   float: left;
   border: none;
   color: black;
 }
 .example {
-  display: flex
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  .example-card {
-   width: 90%;
-   max-height: 90%;
-  }
-  .card-header {
-    height: 150 px;
-    display:block;
-  }
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  a{
-   text-decoration:none;
-  }
-#tool{
-  color: white!important;
+  display: flex;
 }
-  .image {
-    width: 100%;
-   height: 15vh;
-  }
-  .container {
-    height: 15vh; 
-    background-color: #e3e3e3;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-  }
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-card {
+  width: 90%;
+  max-height: 90%;
+}
+.card-header {
+  height: 150 px;
+  display: block;
+}
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+a {
+  text-decoration: none;
+}
+#tool {
+  color: white !important;
+}
+.image {
+  width: 100%;
+  height: 15vh;
+}
+.container {
+  height: 15vh;
+  background-color: #e3e3e3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  ::ng-deep .dx-tile-content .dxi-item {
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
- 
-  }
-  ::ng-deep .dx-tile{
-    border: 1px solid  #dddddd !important;
-    border-radius: 4pt;
-  }
-  .mat-mdc-card-outlined {
-    border: none !important;
-  }
+::ng-deep .dx-tile-content .dxi-item {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+::ng-deep .dx-tile {
+  border: 1px solid #dddddd !important;
+  border-radius: 4pt;
+}
+.mat-mdc-card-outlined {
+  border: none !important;
+}
