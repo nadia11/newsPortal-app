@@ -7,7 +7,19 @@
     .card-header{
       margin-bottom: 5px;
     }
-
+.header{
+  padding-left:20%;
+  padding-right:20%;
+}
+.paragraph{
+  margin-bottom: 3vh;
+  font-size: medium;
+}
+.cover-image{
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+   width: 100%;
+}
     .example-header-image {
       background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
       background-size: cover;

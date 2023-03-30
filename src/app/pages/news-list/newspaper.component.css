@@ -4,6 +4,33 @@
 .container{
   background-color: white !important;
 }
+.card-title{
+  padding-top: 20px;
+  font-family: nyt-cheltenham, Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  color: black;
+}
+.input-group{
+  margin-top: 2vw;
+    padding-right: 1.5vw;
+    display: flex;
+    justify-content: end;
+}
+.input-bar{
+  border: 2 px solid black !important; height: 30px;
+}
+.input-group-append{
+  height:30px !important;
+  border-color: rgb(184, 187, 188);
+}
+.abstract{
+  margin-top: 2vh;
+}
+.see-more{
+  float: left;
+  border: none;
+  color: black;
+}
 .example {
   display: flex
   }
@@ -29,14 +56,14 @@
   color: white!important;
 }
   .image {
-    object-fit: contain;
     width: 100%;
-    max-height: 150px;
+   height: 15vh;
   }
   .container {
-    height: 100vh; 
+    height: 15vh; 
     background-color: #e3e3e3;
     display: flex; 
+    flex-direction: column;
     align-items: center;
   }
 
@@ -50,7 +77,7 @@
  
   }
   ::ng-deep .dx-tile{
-    border: 1px solid  #212529 !important;
+    border: 1px solid  #dddddd !important;
     border-radius: 4pt;
   }
   .mat-mdc-card-outlined {

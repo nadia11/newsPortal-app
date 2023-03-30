@@ -14,7 +14,8 @@ a{
 }
 
 ::ng-deep #longtabs {
-
+  border-color: #d1d1d1;
+  border-style: double;
 }
 
 ::ng-deep #scrolledtabs {
@@ -36,14 +37,13 @@ a{
 }
 
 ::ng-deep .dx-tab {
-  padding: 9px;  background-color:black !important;
-  height:6vh;
-  color: white;
+  padding: 9px;  
+  height:3vh;
   font-size:large;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 ::ng-deep .dx-tab.dx-tab-selected{
-  background-color:#0d6efd!important;
+  background-color:#0b0b0b!important;
   color: white;
 }
